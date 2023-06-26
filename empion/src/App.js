@@ -7,16 +7,14 @@ import React, { useEffect, useState } from "react";
 
 const API_URL = "http://localhost:3000/api/v1";
 
-function getCompanies() {
-  return axios.get(API_URL + "/companies").then((response) => response.data);
-}
-
-function getApplicants() {
-  return axios.get(API_URL + "/applicants").then((response) => response.data);
-}
-
-function getCultures() {
-  return axios.get(API_URL + "/cultures").then((response) => response.data);
+async function fetchData(endpoint) {
+  try {
+    const response = await axios.get(`${API_URL}/${endpoint}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
 
 function App() {
@@ -25,9 +23,17 @@ function App() {
   const [cultures, setCultures] = useState([]);
 
   useEffect(() => {
-    getCompanies().then((data) => setCompanies(data));
-    getApplicants().then((data) => setApplicants(data));
-    getCultures().then((data) => setCultures(data));
+    const fetchDataAsync = async () => {
+      const companiesData = await fetchData("companies");
+      const applicantsData = await fetchData("applicants");
+      const culturesData = await fetchData("cultures");
+
+      setCompanies(companiesData);
+      setApplicants(applicantsData);
+      setCultures(culturesData);
+    };
+
+    fetchDataAsync();
   }, []);
 
   return (

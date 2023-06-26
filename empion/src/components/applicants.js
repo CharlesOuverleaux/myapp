@@ -1,7 +1,6 @@
 import React from "react";
 
 const Applicants = ({ applicants }) => {
-  console.log(applicants);
   return (
     <div>
       <p>Applicants</p>
