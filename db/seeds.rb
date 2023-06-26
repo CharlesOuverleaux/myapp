@@ -7,46 +7,52 @@
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Cleaning database..."
 CultureType.destroy_all
+Applicant.destroy_all
+Company.destroy_all
+Match.destroy_all
 
 puts "Creating culture types..."
-modern = {name: "Modern"}
-traditional =  {name: "Traditional"}
+modern = CultureType.create!(name: "Modern")
+traditional = CultureType.create!(name: "Traditional")
 
-[modern, traditional].each do |attributes|
-  type = CultureType.create!(attributes)
-  puts "Created #{type.name}"
-end
-
-
-Applicant.destroy_all
+puts "Created #{modern.name}"
+puts "Created #{traditional.name}"
 
 applicants = [
-    { first_name: "John", last_name: "Doe", culture_type: "Modern" },
-    { first_name: "Jane", last_name: "Smith", culture_type: "Modern" },
-    { first_name: "Alice", last_name: "Johnson", culture_type: "Traditional" }
-  ]
+  { first_name: "John", last_name: "Doe", culture_type: modern },
+  { first_name: "Jane", last_name: "Smith", culture_type: modern },
+  { first_name: "Alice", last_name: "Johnson", culture_type: traditional }
+]
+
 applicants.each do |applicant_attrs|
-  culture_type_name = applicant_attrs.delete(:culture_type)
-  culture_type = CultureType.find_by(name: culture_type_name)
-  
-  Applicant.create!(applicant_attrs.merge(culture_type: culture_type))
-  puts "Created #{applicant_attrs[:first_name]} #{applicant_attrs[:last_name]}"
+  culture_type = applicant_attrs.delete(:culture_type)
+  applicant = Applicant.create!(applicant_attrs.merge(culture_type: culture_type))
+  puts "Created #{applicant.first_name} #{applicant.last_name}"
 end
 
-
-Company.destroy_all
-
 companies = [
-    { name: "Empion", culture_type: "Modern" },
-    { name: "Henkel", culture_type: "Traditional" },
-    { name: "Spotify", culture_type: "Modern" }
-  ]
+  { name: "Empion", culture_type: modern },
+  { name: "Henkel", culture_type: traditional },
+  { name: "Spotify", culture_type: modern }
+]
+
 companies.each do |company_attrs|
-  culture_type_name = company_attrs.delete(:culture_type)
-  culture_type = CultureType.find_by(name: culture_type_name)
-  
-  Company.create!(company_attrs.merge(culture_type: culture_type))
-  puts "Created #{company_attrs[:name]}"
+  culture_type = company_attrs.delete(:culture_type)
+  company = Company.create!(company_attrs.merge(culture_type: culture_type))
+  puts "Created #{company.name}"
+end
+
+applicants = Applicant.all
+companies = Company.all
+
+puts "Creating matches..."
+applicants.each do |applicant|
+  companies.each do |company|
+    if applicant.culture_type == company.culture_type
+      Match.create!(applicant_id: applicant.id, company_id: company.id)
+      puts "Created match between #{applicant.first_name} and #{company.name}"
+    end
+  end
 end
 
 puts "Finished!"
