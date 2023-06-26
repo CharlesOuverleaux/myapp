@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :culture_types, only: [:index, :show]
+      resources :cultures, only: [:index, :show]
       resources :applicants, except: [:new, :edit]
       resources :companies, except: [:new, :edit]
       resources :matches, except: [:new, :edit]

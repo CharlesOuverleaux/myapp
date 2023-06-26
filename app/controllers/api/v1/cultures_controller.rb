@@ -1,4 +1,4 @@
-class CultureTypesController < ApplicationController
+class Api::V1::CulturesController < ApplicationController
     def index
         @culture_types = CultureType.all
         render json: @culture_types
