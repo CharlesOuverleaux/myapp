@@ -3,6 +3,7 @@ import React from "react";
 const Companies = ({ companies }) => {
   return (
     <div>
+      <p>Companies</p>
       {companies.map((company) => {
         return (
           <div key={company.id}>
