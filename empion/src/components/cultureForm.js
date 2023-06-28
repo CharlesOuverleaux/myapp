@@ -16,17 +16,30 @@ const CultureForm = ({ cultures, setCultures }) => {
   };
 
   return (
-    <div>
-      <h2>Culture Form</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Add a culture e.g. Modern"
-          required
-        />
-        <button type="submit">Add Culture</button>
+    <div className="container p-6 mx-auto max-w-7xl lg:px-8">
+      <h2 className="uppercase text-primary">Add a culture</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="overflow-hidden rounded-md bg-white shadow py-4"
+      >
+        <div className="p-4">
+          <label htmlFor="name" className="px-3.5 py-2.5">
+            Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="e.g. Modern"
+            className="rounded-md border-0 px-3.5 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm opacity-80 hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          Add Culture
+        </button>
       </form>
     </div>
   );
