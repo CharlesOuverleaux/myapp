@@ -1,6 +1,6 @@
 import React from "react";
-import { getCompanyData } from "../helpers/getCompanyData";
-import { getApplicantData } from "../helpers/getApplicantData";
+import { getCompanyData } from "../../helpers/getCompanyData";
+import { getApplicantData } from "../../helpers/getApplicantData";
 
 const Matches = ({ matches, companies, applicants }) => {
   return (

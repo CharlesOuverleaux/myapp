@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/home";
-import Cultures from "./components/cultures";
-import CultureForm from "./components/cultureForm";
-import Companies from "./components/companies";
-import CompanyForm from "./components/companyForm";
-import Applicants from "./components/applicants";
-import ApplicantForm from "./components/applicantForm";
+import Cultures from "./components/data-display/cultures";
+import CultureForm from "./components/forms/cultureForm";
+import Companies from "./components/data-display/companies";
+import CompanyForm from "./components/forms/companyForm";
+import Applicants from "./components/data-display/applicants";
+import ApplicantForm from "./components/forms/applicantForm";
 import { fetchData } from "./helpers/fetchData";
-import Matches from "./components/matches";
+import Matches from "./components/data-display/matches";
 
 function AppRouter() {
   const [companies, setCompanies] = useState([]);

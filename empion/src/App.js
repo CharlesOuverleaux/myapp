@@ -1,9 +1,7 @@
 import "./App.css";
 import React from "react";
 import AppRouter from "./AppRouter";
-import Nav from "./components/Nav";
-
-// TODO: Add jest testing
+import Nav from "./components/data-display/Nav/Nav";
 
 function App() {
   return (
