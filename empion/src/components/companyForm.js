@@ -30,7 +30,7 @@ const CompanyForm = ({ cultures, companies, setCompanies }) => {
 
   return (
     <div className="container p-6 mx-auto max-w-7xl lg:px-8">
-      <h2>Add a company</h2>
+      <h2 className="uppercase text-primary">Add a company</h2>
       <form
         onSubmit={handleSubmit}
         className="overflow-hidden rounded-md bg-white shadow py-4"
