@@ -9,6 +9,11 @@ import ApplicantForm from "./components/applicantForm";
 import Matches from "./components/matches";
 import { fetchData } from "./helpers/fetchData";
 
+// TODO: Add company page (react router)
+// TODO: Style components (tailwind?)
+// TODO: Add jest testing
+// TODO: Add typescript
+
 function App() {
   const [companies, setCompanies] = useState([]);
   const [applicants, setApplicants] = useState([]);
@@ -34,7 +39,6 @@ function App() {
   return (
     <div className="App">
       <h1>Empion</h1>
-
       <Companies companies={companies} />
       <Applicants applicants={applicants} />
       <Cultures cultures={cultures} />
@@ -49,7 +53,11 @@ function App() {
         applicants={applicants}
         setApplicants={setApplicants}
       />
-      <Matches matches={matches} />
+      <Matches
+        matches={matches}
+        companies={companies}
+        applicants={applicants}
+      />
     </div>
   );
 }

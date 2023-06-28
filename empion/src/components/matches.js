@@ -1,6 +1,8 @@
 import React from "react";
+import { getCompanyData } from "../helpers/getCompanyData";
+import { getApplicantData } from "../helpers/getApplicantData";
 
-const Matches = ({ matches }) => {
+const Matches = ({ matches, companies, applicants }) => {
   return (
     <div>
       <p>Matches</p>
@@ -8,7 +10,8 @@ const Matches = ({ matches }) => {
         return (
           <div key={match.id}>
             <p>
-              {match.company_id} - {match.applicant_id}
+              {getCompanyData(companies, match.company_id).name} -{" "}
+              {getApplicantData(applicants, match.applicant_id).last_name}
             </p>
           </div>
         );
