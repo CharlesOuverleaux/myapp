@@ -5,7 +5,7 @@ import { getApplicantData } from "../helpers/getApplicantData";
 const Matches = ({ matches, companies, applicants }) => {
   return (
     <div>
-      <p>Matches</p>
+      <p>Matches Table</p>
       {matches.map((match) => {
         return (
           <div key={match.id}>
