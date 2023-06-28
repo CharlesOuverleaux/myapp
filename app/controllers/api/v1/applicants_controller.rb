@@ -36,6 +36,6 @@ class Api::V1::ApplicantsController < ApplicationController
     private
   
     def applicant_params
-      params.require(:applicant).permit(:first_name, :last_name, :culture_type)
+      params.require(:applicant).permit(:first_name, :last_name, :culture_type_id)
     end
   end

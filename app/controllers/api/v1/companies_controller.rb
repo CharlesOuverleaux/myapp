@@ -36,6 +36,6 @@ class Api::V1::CompaniesController < ApplicationController
     private
   
     def company_params
-      params.require(:company).permit(:name, :culture_type)
+      params.require(:company).permit(:name, :culture_type_id)
     end
   end
