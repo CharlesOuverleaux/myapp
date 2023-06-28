@@ -29,32 +29,48 @@ const CompanyForm = ({ cultures, companies, setCompanies }) => {
   };
 
   return (
-    <div>
-      <h2>Company Form</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Add a company name e.g. Google"
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="culture_type_id">Culture</label>
-        <select
-          name="culture_type_id"
-          value={data.culture_type_id}
-          onChange={handleChange}
+    <div className="container p-6 mx-auto max-w-7xl lg:px-8">
+      <h2>Add a company</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="overflow-hidden rounded-md bg-white shadow py-4"
+      >
+        <div className="p-4">
+          <label htmlFor="name" className="px-3.5 py-2.5">
+            Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Add a company name"
+            className="rounded-md border-0 px-3.5 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="culture_type_id" className="px-3.5 py-2.5">
+            Culture
+          </label>
+          <select
+            name="culture_type_id"
+            value={data.culture_type_id}
+            onChange={handleChange}
+            className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm opacity-80 hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            {cultures.map((culture) => {
+              return (
+                <option key={culture.id} value={culture.id}>
+                  {culture.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <button
+          type="submit"
+          className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm opacity-80 hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
-          {cultures.map((culture) => {
-            return (
-              <option key={culture.id} value={culture.id}>
-                {culture.name}
-              </option>
-            );
-          })}
-        </select>
-        <button type="submit">Add Company</button>
+          Add company
+        </button>
       </form>
     </div>
   );
